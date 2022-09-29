@@ -1,0 +1,132 @@
+/* reset */
+html{
+    font-size: 18px;
+}
+
+body {
+    margin: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* nav */
+nav ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    list-style: none;
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li a {
+    display: block;
+    color: rgb(214, 214, 214);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.current-page {
+    font-style: italic;
+    font-weight: bold;
+}
+
+.no-btm-border {
+    display: row;
+    border-left: 2px solid rgb(255, 255, 255);
+    border-left: none;
+    /* justify-content: flex-end; */
+    /* flex-direction: column; */
+    /* text-align: center; */
+    /* font-size: 64px; */
+}
+
+@media (min-width: 600px) {
+    nav ul{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    nav ul li a {
+        /* justify-content: flex-end; */
+        /* border-right: 1px solid rgb(255, 255, 255); */
+        border-bottom: none;
+    }
+
+    .no-btm-border {
+        float: right;
+        /* justify-content: flex-end; */
+    }
+
+    #home-link {
+        /* padding: 12px; */
+        background-color: rgb(112, 112, 112);
+        order: 3;
+    }
+
+    #p-link {
+        order: 2;
+    }
+
+    #github-link {
+        order: 1;
+    }
+
+    #about-link {
+        order: 3;
+    }
+
+    #connect-link {
+        order: 4;
+    }
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+
+/* main */
+h1, h2{
+    padding: 10px;;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+p {
+    font-family: 'Lato', sans-serif;
+    font-size: 2rem;;
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+@media (min-width: 900px){
+    h1 {
+        font-size: 6rem;
+    }
+
+    p {
+        font-size: 3rem;
+    }
+}
+
+
