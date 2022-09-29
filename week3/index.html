@@ -12,6 +12,11 @@
             /*margin: 0;*/
             height: 100vh;
         }
+
+        main img{
+            max-width: 200px;
+            max-height: 200px;
+        }
     </style>
 </head>
 
@@ -19,21 +24,13 @@
     <header>
         <!-- adding botton -->
         <button id="colorBtn">Click Me!</button>
+        <button id="textBtn">Click Text Button!</button>
+
+        <img src="dynamic.png" alt="dynamic face" id="imgBtn" width="100px" height="100px">
     </header>
     <main id="mainElem"></main>
 
     <!-- adding javascript -->
-    <script>
-        let clrButton = document.getElementById("colorBtn");
-        console.log(clrButton);
-        const mnElement = document.getElementById("mainElem");
-
-        clrButton.addEventListener("click", ()=>{
-            let red = Math.random()*255;
-            let green = Math.random()*255;
-            let blue = Math.random()*255;
-            mnElement.style.backgroundColor = "rgb("+ red +", "+ green +", "+ blue +")";
-        })
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
