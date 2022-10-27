@@ -38,21 +38,21 @@ function setup() {
   v = PI/120;
   l = l+r;
 
-  
+  strokeWeight(2);
   noFill();
 }
 
 function draw() {
   if(frameCount == 400){
-    cirs.push(new f_circle(0, 0, 15, PI/8));
+    cirs.push(new f_circle(0, 0, 30, PI/8));
   }
   
   if(frameCount == 1200){
-    cirs.push(new f_circle(0, 0, 30, PI/2));
+    cirs.push(new f_circle(0, 0, 20, PI/2));
   }
 
   if(frameCount == 2000){
-    cirs.push(new f_circle(0, 0, 50, PI/4));
+    cirs.push(new f_circle(0, 0, 15, PI/3));
   }
   
   // noFill();
@@ -79,10 +79,9 @@ function draw() {
     cirs[i+1].x = cirs[i].x + cos(cirs[i].angle) * cirs[i].radius;
     cirs[i+1].y = cirs[i].y + sin(cirs[i].angle) * cirs[i].radius * sign;
 
+    stroke(100 + i*40);
     line(cirs[i].x, cirs[i].y, cirs[i+1].x, cirs[i+1].y);
     line(cirs[i].x, cirs[i].y, l, cirs[i].y);
-    
-
     // draw_pt[i][frameCount%60].x = cirs[i].x;
     // draw_pt[i][frameCount%60].y = cirs[i].y;
   }
@@ -113,7 +112,8 @@ function draw() {
   draw_pt.push(new Pix(cirs[cirs.length-1].x, cirs[cirs.length-1].y, pt_decay));
   draw_pt.forEach((x) =>{
     // x.x += v * frameRate();
-    stroke(255 - 255*(1-x.life/100));
+    
+    stroke(color(250, 239, 27, 255*x.life/100));
     point(x.x, x.y);
     x.update();
     if (x.life < 1){
@@ -125,18 +125,25 @@ function draw() {
     console.log(cirs[0].random);
   }
   
-  
+
+  let length_counter = 0;
   for(i=0; i<cirs.length; i++){
-    connect_line[i].push(new Pix(l, cirs[i].y, 0.25));
-    connect_line[i].forEach((x) =>{
+    if(i == cirs.length -1){
+      connect_line[i].push(new Pix(l, cirs[i].y, 0.15));
+      connect_line[i].forEach((x) =>{
+      length_counter++;
       x.x += v * frameRate();
-      stroke(color(255, 255, 255, 255 * x.life/100));
+      stroke(color(250, 65, 65, 255*x.life/100));
+      if(length_counter == connect_line.length -1){
+        stroke(color(250, 239, 27, 200*x.life/100 + i*20));
+      }
       point(x.x, x.y);
       x.update();
       if (x.life < 1){
         connect_line[i].shift();
       }
-    });
+      });
+    }  
   }
 
 
