@@ -1,100 +1,91 @@
 let Num_ants = 1;
-let Num_foods = 5;
+let Num_foods = 10;
 
-let Dist = [];
 let foods = [];
 let ants = [];
 
-let Eta = []; // 1/dist
-let Tau = []; // density of pheromone
-let DeltTau = []; //change of pheromone 
-let L_best = []; // best path
-let L_ave = []; //average length of path
-let BestPath = [];
+let distance_graph = [];
+let pheromone_graph = [];
 
-let all_cities = [];//all cities going to be visited
+let food_list = [];
+let this_pos = 0;
+let next_pos = 0;//all cities going to be visited
 
 function setup() {
   createCanvas(400, 400);
-
   background(255);
   stroke(0);
   strokeWeight(5);
 
-  //create foods and calculate distances
-  foods = createFood(foods, Num_foods);
-  console.log(foods);
-  Eta, Tau = Initialize_eta_tau(Dist, foods);
- 
-  //create ants
-  for(let i = 0; i < Num_ants; i++) {
-    ants[i] = new Ants(random(Num_foods));
-   
-    ants[i].init(Num_foods, foods);
-    ants[i].select(Eta, Tau, foods);
-    ants[i].update(foods);
+  //initialize food and food list
+  for(let i=0; i<Num_foods; i++){
+    foods[i] = createVector(random(width), random(height));
+    food_list[i] = true;
+    console.log(foods[i]);
   }
 
-  
+  //initialize ant
+  for(let i =0; i<Num_ants; i++) {
+    ants[i] = new Ant_colony_optimization(i, Num_foods, food_list);
+    console.log(ants[i]);
+  }
+
+  for(let i = 0; i <Num_foods; i++){
+    distance_graph[i] = [];
+    pheromone_graph[i] = [];
+    for(let j = 0; j <Num_foods; j++){
+      distance_graph[i][j] = foods[i].dist(foods[j]);
+      pheromone_graph[i][j] = 0.001;
+    }
+  }
+
+  //using dist and pheromone to select next_pos
+  /*while(ants[0].move_count < Num_foods){
+    console.log("distance_graph", distance_graph, "pheromone_graph: ", pheromone_graph);
+    next_pos = ants[0].__select_next(pheromone_graph, distance_graph);
+    console.log("next_pos: " + next_pos);
+
+    //move to next position
+    console.log("From pos: " + ants[0].current_pos);
+    ants[0].__move();
+    console.log("Moving to pos: "+ ants[0].current_pos);
+    // console.log("Path: "+ ants[0].path);
+  }
+  //calculate total distance
+  console.log("Path: " + ants[0].path);
+  ants[0].__cal_total_dist(distance_graph);
+  console.log("Total Distance: " + ants[0].total_dist);*/
 }
 
 function draw() {
-  console.log(foods);
   background(255, 255, 255, 150);
 
-  strokeWeight(5);
-  foods.forEach((f) => {
-    point(f.x, f.y);
-  });
-
+  strokeWeight(20);
   stroke(0);
-  strokeWeight(1);
-  
+  foods.forEach((food) => {
+    point(food.x, food.y);
+  });
   frameRate(1);
-  // background(220);
-  for(let i=0; i < Num_ants; i++){
-    ants[i].move();
-    ants[i].display();
-    console.log(ants[i].loc_index, ants[i].next_loc_index);
-    console.log(foods[ants[i].loc_index], foods[ants[i].next_loc_index]);
-    // console.log(ants[i].pos, ants[i].next_pos);
-  }
-}
 
-function createFood(F, count){
-  for(let i=0; i<count; i++){
-    F[i] = createVector(random(width), random(height));
-    console.log(F[i]);
-  }
-  console.log(F);
-  return F;
-}
-
-function Initialize_eta_tau(Dist, foods){
-  let f = foods;
-  for(let i=0; i<f.length; i++){
-    Eta[i] = [];
-    Dist[i] = [];
-    Tau[i] = [];
-    for(let j=0; j<f.length; j++){
-      if(i != j){
-        Dist[i][j] = f[i].dist(f[j]);
-      }
-      else{
-        Dist[i][j] = 0.1;
-      }
- 
-      Eta[i][j] = 1/Dist[i][j];
-      Tau[i][j] = 0.0001;
+  ants.forEach((ant) => {
+    if(ant.move_count < ant.num_foods && !ant.finished){
+      ant.next_pos = ant.__select_next(pheromone_graph, distance_graph);
+      ant.__move(ant.next_pos);
+    }else if( ant.finished == false){
+      ant.__cal_total_dist(distance_graph);
+      ants.finished = true;
+      console.log("(from main)Total Distance: " + ant.total_dist);
     }
-  }
-  return Eta, Tau;
-}
-
-function calculate_deta_eta(ants){
+    console.log("this_pos: " + ant.current_pos);
+    // draw(foods);
+    stroke(255,0,0);
+    point(foods[ant.current_pos].x, foods[ant.current_pos].y);
+    strokeWeight(2);
+    console.log("(From main)path length: " + ant.path.length);
+    ant.draw(foods);
+    console.log("(From main)move count: " + ant.move_count);
+    console.log("(From main)path: " + ant.path);
+    
+  });
   
-  for (let i =0; i<Num_ants; i++) {
-    for(let j = 0; j<ants.vistied.length; j++){
-    }
-  }
 }
