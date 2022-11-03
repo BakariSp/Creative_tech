@@ -6,10 +6,7 @@ function setup() {
   createCanvas(400, 400);
 
   for(let i=0; i<num_food; i++){
-    food[i] = [];
-    for(let j=0; j<2; j++){
-      food[i][j] = 200;
-    }
+    food[i] = createVector(200, 200);
   }
  
   for(let i=0; i<num_ants; i++) {
@@ -33,7 +30,7 @@ function draw() {
 }
 
 function mouseReleased(){
-  food.push([mouseX, mouseY]);
+  food.push(createVector(mouseX, mouseY));
   console.log("from mouse function", food);
   // return food;
 }
@@ -47,7 +44,7 @@ class Ant_particle{
 
   move(food){
     console.log("food[0]: ", food[0]);
-    this.next_pos = createVector(food[0][0], food[0][1]);
+    this.next_pos = food[0];
     console.log("(class) next_pos = ",this.next_pos); 
 
     if(food.length > 0){
