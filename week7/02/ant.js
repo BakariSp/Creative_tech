@@ -110,13 +110,14 @@ class Ant_colony_optimization{
     draw(foods){
         strokeWeight(2);
         stroke(0);
+
         if(this.path.length >= 2){
             for(let i = this.path.length -1; i > 0; i--){
                 line(foods[i], foods[i-1]);
                 console.log("drawing line: "+i);
             }
         }
-        
+
         
     }
 }
