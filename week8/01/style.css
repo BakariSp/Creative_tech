@@ -5,4 +5,9 @@ html, body {
 
 canvas {
   display: block;
+  margin: auto;
+}
+
+video {
+  transform: scaleX(-1);
 }

@@ -3,7 +3,11 @@ class Enemy{
         this.pos = createVector(random(width), random(-50, 0));
         this.radius = 5;
         this.speed = 5;
+        this.max_life = 5;
+        this.life = this.max_life;
+        this.color = color(255,255,255);
         this.got_shot = false;
+        this.collided = false;
     }
 
     move(){
@@ -17,12 +21,16 @@ class Enemy{
                 break;
             }
         }
-        return this.got_shot;
+        if(this.got_shot){
+            this.life--;
+        }
+        return this.life;
     }
 
     draw(){
+        this.color.setAlpha(map(this.life, 0, this.max_life, 0, 255));
         rectMode(RADIUS);
-        fill(0);
+        fill(this.color);
         rect(this.pos.x, this.pos.y , this.radius, this.radius);
     }
 
