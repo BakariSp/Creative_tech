@@ -1,0 +1,60 @@
+html, body {
+  background-color:black;
+  
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 80%;
+  margin: 0 auto;
+}
+
+canvas {
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px;
+}
+
+.nav-container {
+  margin-top: 48px;
+  /* apply flex */
+  display: flex;
+  /* push both the blocks to the edges using justify-content */
+  justify-content: space-between;
+}
+
+.right-side, .left-side {
+  list-style-type: none;
+  /* column-gap: 200px; */
+
+}
+
+.right-side li, .left-side li {
+  display: inline-block;
+  padding-left: 10px;
+}
+
+.right-side li a, .left-side li a{
+  /* margin-left: 20px; */
+
+  border-radius: 15px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 1.5em;
+  padding: 8px 10px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* apply hover */
+.right-side li a:hover, .left-side li a:hover {
+  color: rgba(255, 255, 255);
+  background-color: rgb(59, 59, 59);
+}
+
