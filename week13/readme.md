@@ -1,4 +1,9 @@
-##Mulit-controll Processing Project
+##Mulit-controll Processing Project  
+
+
+https://user-images.githubusercontent.com/46394756/207474270-15e438ab-abc2-456d-8d6a-854b83773bfb.mp4
+
+
 ***partcle class***
 >
     class Particle{
@@ -20,7 +25,9 @@
         }
     } 
 
-***main function***
+***main function***  
+![4e176678a36bc308ba1f3256dd40f81](https://user-images.githubusercontent.com/46394756/207474166-9855256b-0f2d-4713-abe3-657b721b06db.png)
+
 In the main function, I controll the color of particles, and using sensor_value to controll the inner speed of these particles, if I touch the pressure sensor, then these particles will fly away.
 >
     void serialEvent(Serial conn){
