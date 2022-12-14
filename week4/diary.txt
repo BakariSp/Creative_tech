@@ -1,0 +1,22 @@
+//2021年11月1日19:09:52 version 1.2
+
+1.flowPoint根据interest对Attractor进行追踪
+2.Attractor在吸收了flowPoint后，获得体积与寿命（影响力与热度）
+
+改进方向：
+1.流场
+2.ellipse替换为关注点
+3.代入数据
+
+//2021年11月3日17:17:06
+1.add shader function but it doesn't work
+2.changed the transparency,topspeed;
+
+next:
+1.find a way to achieve shader function.
+2.consider the possibility of achieving flowfield function.
+
+
+//2021年11月3日21:55:40
+version 2.0
+lighting !!!!!
