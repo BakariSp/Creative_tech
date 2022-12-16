@@ -1,7 +1,12 @@
-##Multi-controller music machine
+##Multi-controller music machine  
 
 
-https://user-images.githubusercontent.com/46394756/207997686-7c71b66a-20de-49fe-8ead-ca2522c8f76c.mp4
+
+
+https://user-images.githubusercontent.com/46394756/207997994-9ebe08a1-9247-465e-bfbf-36c092bb6eeb.mp4
+
+
+
 ![d3dcac38794e4af2dcbad51978c781a](https://user-images.githubusercontent.com/46394756/207997710-c3f8e99e-cd5d-4f6e-a253-4ef780f2413f.png)
 
 
