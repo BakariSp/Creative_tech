@@ -1,4 +1,4 @@
-##Mulit-controll Processing Project  
+##Multi-controll Processing Project  
 
 
 https://user-images.githubusercontent.com/46394756/207474270-15e438ab-abc2-456d-8d6a-854b83773bfb.mp4
